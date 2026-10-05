@@ -1,0 +1,4 @@
+,precision,recall,f1-score,support
+Dropout,0.583,0.5563,0.5694,284
+Enrolled,0.3167,0.478,0.381,159
+Graduate,0.7326,0.6199,0.6716,442

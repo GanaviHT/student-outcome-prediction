@@ -1,0 +1,6 @@
+model,cv_macro_f1_mean,cv_macro_f1_std,cv_accuracy_mean,cv_balanced_accuracy_mean
+Dummy (most frequent),0.222,0.0002,0.4993,0.3333
+Logistic Regression (no weights),0.5519,0.0153,0.6499,0.549
+Logistic Regression (balanced),0.5677,0.0161,0.603,0.5772
+Random Forest (balanced),0.5693,0.0253,0.6318,0.5683
+Gradient Boosting (balanced),0.5757,0.0135,0.6151,0.5832

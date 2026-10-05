@@ -1,0 +1,55 @@
+===== Dummy (most frequent) (test set) =====
+          precision  recall  f1-score  support
+Dropout      0.0000     0.0    0.0000      284
+Enrolled     0.0000     0.0    0.0000      159
+Graduate     0.4994     1.0    0.6662      442
+
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout              0              0            284
+true Enrolled             0              0            159
+true Graduate             0              0            442
+
+===== Logistic Regression (no weights) (test set) =====
+          precision  recall  f1-score  support
+Dropout      0.6627  0.5880    0.6231      284
+Enrolled     0.2917  0.1321    0.1818      159
+Graduate     0.6524  0.8281    0.7298      442
+
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            167             24             93
+true Enrolled            36             21            102
+true Graduate            49             27            366
+
+===== Logistic Regression (balanced) (test set) =====
+          precision  recall  f1-score  support
+Dropout      0.6862  0.5775    0.6272      284
+Enrolled     0.3007  0.5220    0.3816      159
+Graduate     0.7027  0.5882    0.6404      442
+
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            164             66             54
+true Enrolled            20             83             56
+true Graduate            55            127            260
+
+===== Random Forest (balanced) (test set) =====
+          precision  recall  f1-score  support
+Dropout      0.5882  0.6338    0.6102      284
+Enrolled     0.3050  0.2704    0.2867      159
+Graduate     0.7032  0.6968    0.7000      442
+
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            180             42             62
+true Enrolled            48             43             68
+true Graduate            78             56            308
+
+===== Gradient Boosting (balanced) (test set) =====
+          precision  recall  f1-score  support
+Dropout      0.6600   0.581    0.6180      284
+Enrolled     0.2992   0.478    0.3680      159
+Graduate     0.7297   0.629    0.6756      442
+
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            165             68             51
+true Enrolled            31             76             52
+true Graduate            54            110            278
+

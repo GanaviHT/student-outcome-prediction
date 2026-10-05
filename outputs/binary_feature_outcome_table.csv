@@ -1,0 +1,17 @@
+feature,value,n,dropout_%,graduate_%
+Daytime/evening attendance,0,382,43.5,40.8
+Daytime/evening attendance,1,3157,30.8,51.0
+Displaced,0,1597,37.8,44.1
+Displaced,1,1942,27.5,54.7
+Educational special needs,0,3498,32.1,50.0
+Educational special needs,1,41,31.7,46.3
+Debtor,0,3150,28.2,53.8
+Debtor,1,389,64.0,18.3
+Tuition fees up to date,0,419,86.9,5.0
+Tuition fees up to date,1,3120,24.8,56.0
+Gender,0,2298,25.3,57.9
+Gender,1,1241,44.8,35.1
+Scholarship holder,0,2645,38.6,41.3
+Scholarship holder,1,894,12.9,75.5
+International,0,3453,32.3,50.0
+International,1,86,26.7,48.8

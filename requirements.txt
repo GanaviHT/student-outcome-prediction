@@ -1,0 +1,12 @@
+# Core libraries (minimum versions; newer versions are fine)
+numpy>=1.26
+pandas>=2.1
+scikit-learn>=1.4
+matplotlib>=3.9
+joblib>=1.3
+
+# Needed only to open/run the notebook in VS Code
+ipykernel>=6.29
+
+# Needed only to run the unit tests (python -m pytest tests -q)
+pytest>=8.0

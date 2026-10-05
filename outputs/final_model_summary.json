@@ -1,0 +1,13 @@
+{
+  "selection_rule": "highest mean 5-fold CV Macro F1 on the training set",
+  "selected_model": "Gradient Boosting (balanced)",
+  "cv_macro_f1_mean": 0.5757,
+  "test_metrics": {
+    "accuracy": 0.5864,
+    "balanced_accuracy": 0.5626,
+    "macro_precision": 0.563,
+    "macro_recall": 0.5626,
+    "macro_f1": 0.5539,
+    "weighted_f1": 0.6018
+  }
+}

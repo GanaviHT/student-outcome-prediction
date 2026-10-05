@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Secrets / credentials - never commit these
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+credentials.*
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# NOTE: data/data.csv, models/best_model.joblib and outputs/ are intentionally
+# committed so the evaluator can see the dataset, the saved model and the results.

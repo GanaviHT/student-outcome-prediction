@@ -1,0 +1,9 @@
+,actual_outcome,predicted_outcome,P(Dropout),P(Enrolled),P(Graduate),correct
+4055,Dropout,Dropout,0.577,0.296,0.127,yes
+3003,Dropout,Graduate,0.139,0.284,0.577,NO
+3653,Enrolled,Enrolled,0.157,0.479,0.365,yes
+186,Enrolled,Dropout,0.805,0.157,0.038,NO
+2271,Graduate,Graduate,0.143,0.29,0.567,yes
+168,Graduate,Dropout,0.551,0.164,0.286,NO
+Hypothetical A (typical),(unknown - made up),Graduate,0.099,0.407,0.495,n/a
+"Hypothetical B (debt, fees overdue, age 30)",(unknown - made up),Dropout,0.965,0.031,0.005,n/a

@@ -1,0 +1,179 @@
+
+==============================================================================
+1. LOAD AND INSPECT
+==============================================================================
+Rows: 4424   Columns: 37
+Missing values (total): 0
+Duplicate rows: 0
+Data types: {'int64': 29, 'float64': 7, 'str': 1}
+Target classes (count): {'Graduate': 2209, 'Dropout': 1421, 'Enrolled': 794}
+Target classes (%):     {'Graduate': 49.93, 'Dropout': 32.12, 'Enrolled': 17.95}
+
+Numeric ranges:
+                                   min  median     max
+Application order                0.00    1.00    9.00
+Previous qualification (grade)  95.00  133.10  190.00
+Admission grade                 95.00  126.10  190.00
+Age at enrollment               17.00   20.00   70.00
+Unemployment rate                7.60   11.10   16.20
+Inflation rate                  -0.80    1.40    3.70
+GDP                             -4.06    0.32    3.51
+
+Categorical-code columns:
+                         n_codes  codes_with_<10_students  largest_code_share_%
+column                                                                        
+Marital status                6                        2                  88.6
+Application mode             18                        4                  38.6
+Course                       17                        0                  17.3
+Previous qualification       17                        7                  84.0
+Nacionality                  21                       16                  97.5
+Mother's qualification       29                       19                  24.2
+Father's qualification       34                       22                  27.3
+Mother's occupation          32                       18                  35.6
+Father's occupation          46                       32                  22.8
+
+==============================================================================
+2. SEPARATE TARGET, DROP PROHIBITED COLUMNS, TRAIN/TEST SPLIT
+==============================================================================
+Predictors used: 24 (the 12 semester-performance columns are excluded)
+Train: 3539 students | Test: 885 students (seed=42, stratified)
+Train class %: {'Graduate': 49.9, 'Dropout': 32.1, 'Enrolled': 17.9}
+Test  class %: {'Graduate': 49.9, 'Dropout': 32.1, 'Enrolled': 18.0}
+
+==============================================================================
+3. EDA (training data only)
+==============================================================================
+EDA figures saved to C:\Users\samrudhi\Downloads\student-outcome-prediction (1)\student-outcome-prediction\outputs\figures
+
+==============================================================================
+4. MODEL SELECTION: 5-fold CV on TRAINING data
+==============================================================================
+  CV  Dummy (most frequent)              macro-F1 = 0.2220 (+/- 0.0002)   [0s]
+  CV  Logistic Regression (no weights)   macro-F1 = 0.5519 (+/- 0.0153)   [2s]
+  CV  Logistic Regression (balanced)     macro-F1 = 0.5677 (+/- 0.0161)   [2s]
+  CV  Random Forest (balanced)           macro-F1 = 0.5693 (+/- 0.0253)   [5s]
+  CV  Gradient Boosting (balanced)       macro-F1 = 0.5757 (+/- 0.0135)   [13s]
+
+Selected by highest CV Macro F1: Gradient Boosting (balanced)
+
+==============================================================================
+5. FIT ON TRAIN, EVALUATE ONCE ON TEST SET
+==============================================================================
+CV results:
+                                   cv_macro_f1_mean  cv_macro_f1_std  cv_accuracy_mean  cv_balanced_accuracy_mean
+model                                                                                                           
+Dummy (most frequent)                       0.2220           0.0002            0.4993                     0.3333
+Logistic Regression (no weights)            0.5519           0.0153            0.6499                     0.5490
+Logistic Regression (balanced)              0.5677           0.0161            0.6030                     0.5772
+Random Forest (balanced)                    0.5693           0.0253            0.6318                     0.5683
+Gradient Boosting (balanced)                0.5757           0.0135            0.6151                     0.5832
+
+Test-set metrics:
+                                   accuracy  balanced_accuracy  macro_precision  macro_recall  macro_f1  weighted_f1
+model                                                                                                              
+Dummy (most frequent)               0.4994             0.3333           0.1665        0.3333    0.2221       0.3327
+Logistic Regression (no weights)    0.6260             0.5161           0.5356        0.5161    0.5116       0.5971
+Logistic Regression (balanced)      0.5729             0.5626           0.5632        0.5626    0.5497       0.5897
+Random Forest (balanced)            0.6000             0.5337           0.5321        0.5337    0.5323       0.5969
+Gradient Boosting (balanced)        0.5864             0.5626           0.5630        0.5626    0.5539       0.6018
+
+--- Dummy (most frequent) ---
+          precision  recall  f1-score  support
+Dropout       0.000     0.0     0.000      284
+Enrolled      0.000     0.0     0.000      159
+Graduate      0.499     1.0     0.666      442
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout              0              0            284
+true Enrolled             0              0            159
+true Graduate             0              0            442
+
+--- Logistic Regression (no weights) ---
+          precision  recall  f1-score  support
+Dropout       0.663   0.588     0.623      284
+Enrolled      0.292   0.132     0.182      159
+Graduate      0.652   0.828     0.730      442
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            167             24             93
+true Enrolled            36             21            102
+true Graduate            49             27            366
+
+--- Logistic Regression (balanced) ---
+          precision  recall  f1-score  support
+Dropout       0.686   0.577     0.627      284
+Enrolled      0.301   0.522     0.382      159
+Graduate      0.703   0.588     0.640      442
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            164             66             54
+true Enrolled            20             83             56
+true Graduate            55            127            260
+
+--- Random Forest (balanced) ---
+          precision  recall  f1-score  support
+Dropout       0.588   0.634     0.610      284
+Enrolled      0.305   0.270     0.287      159
+Graduate      0.703   0.697     0.700      442
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            180             42             62
+true Enrolled            48             43             68
+true Graduate            78             56            308
+
+--- Gradient Boosting (balanced) ---
+          precision  recall  f1-score  support
+Dropout       0.660   0.581     0.618      284
+Enrolled      0.299   0.478     0.368      159
+Graduate      0.730   0.629     0.676      442
+               pred Dropout  pred Enrolled  pred Graduate
+true Dropout            165             68             51
+true Enrolled            31             76             52
+true Graduate            54            110            278
+
+==============================================================================
+6. SAVE FINAL MODEL
+==============================================================================
+Saved best_model.joblib (0.8 MB) + metadata
+Final model summary: {'selection_rule': 'highest mean 5-fold CV Macro F1 on the training set', 'selected_model': 'Gradient Boosting (balanced)', 'cv_macro_f1_mean': 0.5757, 'test_metrics': {'accuracy': 0.5864, 'balanced_accuracy': 0.5626, 'macro_precision': 0.563, 'macro_recall': 0.5626, 'macro_f1': 0.5539, 'weighted_f1': 0.6018}}
+
+==============================================================================
+7. INTERPRETATION (permutation importance, final model)
+==============================================================================
+                   feature  importance_macro_f1_drop     std
+0  Tuition fees up to date                    0.0609  0.0068
+1                   Course                    0.0400  0.0051
+2        Age at enrollment                    0.0263  0.0057
+3          Admission grade                    0.0187  0.0087
+4        Unemployment rate                    0.0140  0.0065
+5       Scholarship holder                    0.0127  0.0042
+6   Mother's qualification                    0.0107  0.0058
+7         Application mode                    0.0077  0.0046
+8                   Gender                    0.0051  0.0053
+9      Mother's occupation                    0.0048  0.0047
+
+==============================================================================
+8. SAMPLE PREDICTIONS (loaded from the saved model file)
+==============================================================================
+                                                  actual_outcome predicted_outcome  P(Dropout)  P(Enrolled)  P(Graduate) correct
+4055                                                     Dropout           Dropout       0.577        0.296        0.127     yes
+3003                                                     Dropout          Graduate       0.139        0.284        0.577      NO
+3653                                                    Enrolled          Enrolled       0.157        0.479        0.365     yes
+186                                                     Enrolled           Dropout       0.805        0.157        0.038      NO
+2271                                                    Graduate          Graduate       0.143        0.290        0.567     yes
+168                                                     Graduate           Dropout       0.551        0.164        0.286      NO
+Hypothetical A (typical)                     (unknown - made up)          Graduate       0.099        0.407        0.495     n/a
+Hypothetical B (debt, fees overdue, age 30)  (unknown - made up)           Dropout       0.965        0.031        0.005     n/a
+
+==============================================================================
+9. SENSITIVITY CHECK: without the two fee-status columns
+==============================================================================
+  CV  Gradient Boosting (balanced)       macro-F1 = 0.5305 (+/- 0.0149)   [12s]
+                                                    cv_macro_f1  test_macro_f1  test_accuracy
+setting                                                                                      
+Primary (all 24 features)                                0.5757         0.5539         0.5864
+Without Debtor, Tuition fees up to date (22 fea...       0.5305         0.5406         0.5740
+          precision  recall  f1-score  support
+Dropout       0.583   0.556     0.569      284
+Enrolled      0.317   0.478     0.381      159
+Graduate      0.733   0.620     0.672      442
+
+==============================================================================
+DONE - see the outputs/ folder
+==============================================================================

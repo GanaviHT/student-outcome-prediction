@@ -1,0 +1,3 @@
+setting,cv_macro_f1,test_macro_f1,test_accuracy
+Primary (all 24 features),0.5757,0.5539,0.5864
+"Without Debtor, Tuition fees up to date (22 features)",0.5305,0.5406,0.574
